@@ -2,9 +2,9 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://tjaskula.github.io
-gitlocation: https://github.com/tjaskula/tjaskula.github.io.git
-gitbranch: master
+url: http://tjaskula.github.io/Blog
+gitlocation: https://github.com/tjaskula/Blog.git
+gitbranch: gh-pages
 title: FsBlog - F# static site generation
 description: >
     FsBlog aims to be a blog-aware static site generator, mostly built in F#. But don't worry, 

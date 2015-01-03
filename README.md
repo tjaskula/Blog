@@ -1,6 +1,6 @@
 # Tomasz Jaskula's blog
 
-This is the code source for the blog hosted at [tjaskula.github.io/Blog](tjaskula.github.io/Blog).
+This is the code source for the blog hosted at [tjaskula.github.io](tjaskula.github.io).
 
 ## What this blog is about ?
 

@@ -8,8 +8,8 @@ gitbranch: gh-pages
 title: Tomasz Jaskula's blog
 description: >
     Software architecture, software craftsmanship, functional languages and mostly F#
-	are topics dear to my heart. I don't restrict myself to talk only about these
-	but will pick up topics that are of interest to me :)
+    are topics dear to my heart. I don't restrict myself to talk only about these
+    but will pick up topics that are of interest to me :)
 
 source: source/
 blog: source/blog/

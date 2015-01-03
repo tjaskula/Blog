@@ -8,45 +8,87 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>FsBlog</title>
-    <link rel="stylesheet" href="@Model.Root/stylesheets/styles.css">
-    <link rel="stylesheet" href="@Model.Root/stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="@Model.Root/stylesheets/bootstrap/less/bootstrap.css">
     <link rel="shortcut icon" href="@Model.Root/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <script>
+          (function(d) {
+              var config = {
+                          kitId: 'xfo7ulp',
+                          scriptTimeout: 3000
+                      },
+                      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          })(document);
+      </script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!-- FSharp.Formatting Styles --> 
-  	<link rel="stylesheet" type="text/css" media="screen" href="@Model.Root/fsharp.formatting/tooltips.css" /> 
-  	<script type="text/javascript" src="@Model.Root/fsharp.formatting/tooltips.js"></script>
+  <!--	<link rel="stylesheet" type="text/css" media="screen" href="@Model.Root/fsharp.formatting/tooltips.css" />
+  	<script type="text/javascript" src="@Model.Root/fsharp.formatting/tooltips.js"></script>-->
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </head>
   <body>
-  	<div class="wrapper">
+
 	  <header>
-	  	  <a href="@Model.Root/index.html" class="falseheader">FsBlog</a>
-        <p>Blog aware, static site generation using F#.</p>
+
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h1><a class="" href="@Model.Root/index.html">Tomasz Jaskula</a>
+                <small>Blog aware, static site generation using F#.</small>
+            </h1>
+
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li>
+                  <a href="../about-me/">About Me</a>
+              </li>
+              <li class="active">
+                  <a href="../talks/">Talks</a>
+              </li>
+          </ul>
+
+        </nav>
+
+
         
-        <p class="view"><a href="https://github.com/saxonmatt/FsBlog">View the Project on GitHub</a></p>
-        <ul>
-          <li><a href="https://github.com/saxonmatt/FsBlog">View On <strong>GitHub</strong></a></li>
-          <li><a href="https://github.com/saxonmatt/FsBlog/issues">Report a <strong>Bug</strong></a></li>
-          <li><a href="https://github.com/saxonmatt/FsBlog/issues/milestones">Check <strong>Progress</strong></a></li>
-        </ul>
-        <h2>Recent posts</h2>
-        @foreach (var post in Enumerable.Take(Model.Posts, 5))
-    		{
-    		    <h3 class="h2link"><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a></h3>
-    		    <p class="view"><small>@PostDate(post.Date)</small><br />@post.Abstract</p>
-    		}
+
       </header>
-      <section>
-		    @RenderBody()
-      </section>
+      <div class="container">
+        <div class="row">
+          <main class="col-lg-8">
+                @RenderBody()
+          </main>
+          <aside class="col-lg-4">
+                <article>
+                     <h2>Recent posts</h2>
+                            @foreach (var post in Enumerable.Take(Model.Posts, 5))
+                        		{
+                        		    <h3 class="h2link"><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a></h3>
+                        		    <p class="view"><small>@PostDate(post.Date)</small><br />@post.Abstract</p>
+                        		}
+                </article>
+          </aside>
+        </div>
+      </div>
       <footer>
-        <p>This project is maintained by <a href="https://twitter.com/mattdrivendev">MattDrivenDev</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <p>This project is maintained by <a href="https://twitter.com/mattdrivendev">MattDrivenDev</a></p>
+                      <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+                  </div>
+              </div>
+          </div>
+
       </footer>
-  	</div>
+
     <script src="@Model.Root/javascripts/scale.fix.js"></script>
   </body>
 </html>

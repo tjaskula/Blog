@@ -2,13 +2,14 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://tjaskula.github.io/Blog
-gitlocation: https://github.com/tjaskula/Blog.git
-gitbranch: gh-pages
+url: http://tjaskula.github.io
+gitlocation: https://github.com/tjaskula/tjaskula.github.io.git
+gitbranch: master
 title: Tomasz Jaskula's blog
 description: >
-    Software architecture, software craftsmanship, functional languages and mostly F#
-    are topics dear to my heart. I don't restrict myself to talk only about these
+    F# and functional programming is the topic I'm interested in and passionate about at the moment.
+    However, software architecture, software craftsmanship, Domain Driven Design
+    are also topics dear to my heart. I don't restrict myself to talk only about these
     but will pick up topics that are of interest to me :)
 
 source: source/

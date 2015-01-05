@@ -79,17 +79,20 @@ table.pre td.lines {
   Formatting for page & standard document content
 /*--------------------------------------------------------------------------*/
 
+/*
 body {
   font-family: Actor, serif;
   padding-top: 0px;
   padding-bottom: 40px;
 }
+*/
 
-pre {
+/*pre {
     word-wrap: inherit;
-}
+}*/
 
-/* Format the heading - nicer spacing etc. */
+ /*Format the heading - nicer spacing etc. */
+
 .masthead {
   overflow: hidden;
 }
@@ -104,16 +107,18 @@ pre {
   margin-bottom:5px;
   font-size:170%;
 }
-hr {
+/*hr {
   margin:0px 0px 20px 0px;
-}
+}*/
 
-/* Make table headings and td.title bold */
-td.title, thead {
+ /*Make table headings and td.title bold */
+
+/*td.title, thead {
   font-weight:bold;
-}
+}*/
 
-/* Format the right-side menu */
+ /*Format the right-side menu */
+
 #menu {
   margin-top:50px;
   font-size:11pt;
@@ -130,7 +135,8 @@ td.title, thead {
   line-height:25px;
 }
 
-/* Change font sizes for headings etc. */
+ /*Change font sizes for headings etc. */
+
 #main h1 { font-size: 26pt; margin:10px 0px 15px 0px; }
 #main h2 { font-size: 20pt; margin:20px 0px 0px 0px; }
 #main h3 { font-size: 14pt; margin:15px 0px 0px 0px; }
@@ -142,7 +148,7 @@ td.title, thead {
   Formatting for API reference
 /*--------------------------------------------------------------------------*/
 
-#main h2 {         
+#main h2 {
   font-size: 160%;
   margin-top:40px;
 }

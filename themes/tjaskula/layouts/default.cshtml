@@ -40,7 +40,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <h1><a class="" href="@Model.Root/index.html">Tomasz Jaskula</a>
+            <h1><a class="" href="@Model.Root/index.html">Tomasz <strong>Jaskula</strong></a>
                 <small>Blog aware, static site generation using F#.</small>
             </h1>
 
@@ -67,18 +67,40 @@
                 @RenderBody()
           </main>
           <aside class="col-lg-4">
+              <article>
+                  <img class="img-responsive img-circle" src="../img/aside_face.jpg" />
+                  <div class="aside-text">
+                      <blockquote class="small">
+                          <p><cite>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus.</cite></p>
+                            <footer>Tomasz Jaskuła</footer>
+                      </blockquote>
+                  </div>
+                  <div class="social">
+                      <a href="" title="facebook"><img src="../img/facebook.jpg" /></a>
+                      <a href="" title="github"><img src="../img/github.jpg" /></a>
+                      <a href="" title="google"><img src="../img/google.jpg" /></a>
+                      <a href="" title="twitter"><img src="../img/twitter.jpg" /></a>
+                  </div>
+              </article>
                 <article>
                      <h2>Recent posts</h2>
+                        <ul class="articles-list">
                             @foreach (var post in Enumerable.Take(Model.Posts, 5))
-                        		{
-                        		    <h3 class="h2link"><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a></h3>
-                        		    <p class="view"><small>@PostDate(post.Date)</small><br />@post.Abstract</p>
-                        		}
+                            {
+                                <li>
+                                    <h3><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a>
+                                        <span>@PostDate(post.Date)</span>
+                                    </h3>
+                                    <p class="abstract">@post.Abstract</p>
+                                </li>
+                            }
+                        </ul>
+
                 </article>
           </aside>
         </div>
       </div>
-      <footer>
+      <footer class="bottom">
           <div class="container">
               <div class="row">
                   <div class="col-lg-12">

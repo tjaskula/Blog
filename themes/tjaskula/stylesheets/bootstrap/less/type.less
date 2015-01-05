@@ -5,11 +5,24 @@
 
 // Headings
 // -------------------------
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2,
+.h1, .h2 {
   font-family: @headings-font-family;
-  font-weight: @headings-font-weight;
+  font-weight: 400;
+  line-height: @headings-line-height;
+  color: @headings-color;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
+}
+h3, h4, h5, h6,
+.h3, .h4, .h5, .h6 {
+  font-family: @font-family-sans-serif;
+  font-weight: 400;
   line-height: @headings-line-height;
   color: @headings-color;
 

@@ -5,7 +5,7 @@ This is the code source for the blog hosted at [tjaskula.github.io](tjaskula.git
 ## What this blog is about ?
 
 F# and functional programming is the topic I'm interested in and passionate about at the moment.
-However, software architecture, software craftsmanship, Domain Driven Design are also topics dear to my heart. I don't restrict myself to talk only about these but will pick up topics that are of interest to me :)
+However, software architecture, software craftsmanship, Domain Driven Design are also topics dear to my heart. So stay tuned! There is more to come...
 
 ## Contributions
 

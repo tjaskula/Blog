@@ -43,66 +43,65 @@
             <h1><a class="" href="@Model.Root/index.html">Tomasz Jaskula's blog</a>
                 <small>Improve signal, reduce noise = use F#</small>
             </h1>
-
         </div>
+
         <nav class="collapse navbar-collapse bs-navbar-collapse">
           <ul class="nav navbar-nav">
               <li>
-                    <a href="@Model.Root/blog/">Blog</a>
-                </li>
-                <li>
-                    <a href="@Model.Root/about-me/">About Me</a>
+                  <a href="@Model.Root/blog/">Blog</a>
               </li>
-              <li class="active">
+              <!-- <li>
+                  <a href="@Model.Root/about-me/">About Me</a>
+              </li> -->
+              <!-- <li class="active">
                     <a href="@Model.Root/talks/">Talks</a>
-              </li>
+              </li> -->
           </ul>
-
         </nav>
 
+    </header>
 
-        
+    <div class="container">
+      <div class="row">
+        <main class="col-lg-8">
+              @RenderBody()
+        </main>
+        <aside class="col-lg-4">
+              <article>
+                <img class="img-responsive img-circle" src="../img/aside_face.jpg" />
+                <div class="aside-text">
+                    <blockquote class="small">
+                        <p><cite>Welcome to my blog! F# and functional programming is the topic I'm interested in and passionate about at the moment. However, software architecture, software craftsmanship, Domain Driven Design are also topics dear to my heart. I'll be mainly writing about these topics but I might also pick up other topics that are of interest to me.</cite></p>
+                          <footer>Tomasz Jaskuła</footer>
+                    </blockquote>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/thomas.jaskula" title="facebook"><img src="../img/facebook.jpg" /></a>
+                    <a href="https://github.com/tjaskula" title="github"><img src="../img/github.jpg" /></a>
+                    <a href="https://plus.google.com/u/1/106268061202265370189/about" title="google"><img src="../img/google.jpg" /></a>
+                    <a href="https://twitter.com/tjaskula" title="twitter"><img src="../img/twitter.jpg" /></a>
+                </div>
+            </article>
+              <article>
+                   <h2>Recent posts</h2>
 
-      </header>
-      <div class="container">
-        <div class="row">
-          <main class="col-lg-8">
-                @RenderBody()
-          </main>
-          <aside class="col-lg-4">
-                <article>
-                  <img class="img-responsive img-circle" src="../img/aside_face.jpg" />
-                  <div class="aside-text">
-                      <blockquote class="small">
-                          <p><cite>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus.</cite></p>
-                            <footer>Tomasz Jaskuła</footer>
-                      </blockquote>
-                  </div>
-                  <div class="social">
-                      <a href="" title="facebook"><img src="../img/facebook.jpg" /></a>
-                      <a href="" title="github"><img src="../img/github.jpg" /></a>
-                      <a href="" title="google"><img src="../img/google.jpg" /></a>
-                      <a href="" title="twitter"><img src="../img/twitter.jpg" /></a>
-                  </div>
+                      <ul class="articles-list">
+                          @foreach (var post in Enumerable.Take(Model.Posts, 5))
+                      		{
+                              <li>
+                                  <h3><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a>
+                                      <span>@PostDate(post.Date)</span>
+                                  </h3>
+                                  <p class="abstract">@post.Abstract</p>
+                              </li>
+                      		}
+                      </ul>
+
               </article>
-                <article>
-                     <h2>Recent posts</h2>
-                        <ul class="articles-list">
-                            @foreach (var post in Enumerable.Take(Model.Posts, 5))
-                        		{
-                                <li>
-                                    <h3><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a>
-                                        <span>@PostDate(post.Date)</span>
-                                    </h3>
-                                    <p class="abstract">@post.Abstract</p>
-                                </li>
-                        		}
-                        </ul>
-
-                </article>
-          </aside>
-        </div>
+        </aside>
       </div>
+    </div>
+
       <footer class="bottom">
           <div class="container">
               <div class="row">

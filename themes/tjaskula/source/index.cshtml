@@ -3,3 +3,25 @@
     Title = "Tomasz Jaskula's blog";
     Description = "Improve signal, reduce noise = use F#";
 }
+
+@using System.Linq
+@helper PostDate(DateTime rawDate)
+{
+    <time datetime="@rawDate.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss")" pubdate data-updated="true">@rawDate.ToString("d MMMM yyyy")</time>
+}
+
+@foreach (var post in Enumerable.Take(Model.Posts, 5))
+{
+    <h3 class="h2link">
+        <a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a>
+    </h3>
+    <h6>
+        @PostDate(post.Date)
+    </h6>
+    <br />
+    <article>
+        @post.Abstract
+
+        <a href="@Model.Root/blog/@post.Url/index.html">Read more ...</a>
+    </article>
+}

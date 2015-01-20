@@ -94,7 +94,7 @@
         </main>
         <aside class="col-lg-4">
               <article>
-                <img class="img-responsive img-circle" src="../img/aside_face.jpg" />
+                <img class="img-responsive img-circle" src="@Model.Root/img/aside_face.jpg" />
                 <div class="aside-text">
                     <blockquote class="small">
                         <p><cite>Welcome to my blog! F# and functional programming it's what I'm interested in and passionate about at the moment. However, software architecture, software craftsmanship, Domain Driven Design are also topics dear to my heart. So stay tuned! There is more to come...</cite></p>
@@ -102,10 +102,10 @@
                     </blockquote>
                 </div>
                 <div class="social">
-                    <a href="https://www.facebook.com/thomas.jaskula" title="facebook"><img src="../img/facebook.jpg" /></a>
-                    <a href="https://github.com/tjaskula" title="github"><img src="../img/github.jpg" /></a>
-                    <a href="https://plus.google.com/u/1/106268061202265370189/about" title="google"><img src="../img/google.jpg" /></a>
-                    <a href="https://twitter.com/tjaskula" title="twitter"><img src="../img/twitter.jpg" /></a>
+                    <a href="https://www.facebook.com/thomas.jaskula" title="facebook"><img src="@Model.Root/img/facebook.jpg" /></a>
+                    <a href="https://github.com/tjaskula" title="github"><img src="@Model.Root/img/github.jpg" /></a>
+                    <a href="https://plus.google.com/u/1/106268061202265370189/about" title="google"><img src="@Model.Root/img/google.jpg" /></a>
+                    <a href="https://twitter.com/tjaskula" title="twitter"><img src="@Model.Root/img/twitter.jpg" /></a>
                 </div>
             </article>
               <article>
@@ -118,7 +118,6 @@
                                   <h3><a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a>
                                       <span>@PostDate(post.Date)</span>
                                   </h3>
-                                  <p class="abstract">@post.Abstract</p>
                               </li>
                       		}
                       </ul>

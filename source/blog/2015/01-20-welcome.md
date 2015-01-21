@@ -17,8 +17,6 @@ When I started to think about what title would best fit my new blog, I was stuck
 
 <!-- more -->
 
-When I started to think about what title would best fit my new blog, I was stuck. I couldn't find anything that really translated the state of my mind. I wanted it to be short but also communicative. Something, that when you read it you already have an idea of what kind of content you can find on this blog. Still nothing on my mind...
-
 In the meanwhile, my old blog hosted on [Codedistillers](http://www.codedistillers.com/?author=11) crashed. Anyway, I had almost no activity in blogging in 2014 because of my side project [RocketCv](http://www.rocketcv.pl) which I wrote partly in F# in 2013 and 2014 and because of some personal reasons that happened at that time. I blogged a little a while back about F# but I was just on my learning curve at the time (I'm still on but a little bit higher).
 
 I run also **[F#](http://www.meetup.com/Functional-Programming-in-F/)** and **[Domain Driven Design](http://www.meetup.com/DDD-Paris/)** communities in Paris. We're actively looking for people willing to come and speak in Paris for both F# and DDD. However, on behalf of F# group I take this opportunity to thank **[Mathias Brandewinder](http://www.tiwtter.com/brandewinder)**, a really great guy, that put a lot of his free time for the Paris F# community, even if he lives in San Francisco. Our local F# ninjas **[Robert Pickering](http://www.tiwtter.com/robertpi)** and **[Jéremie Chassaing](http://www.tiwtter.com/thinkb4coding)** are involved too.

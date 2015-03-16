@@ -10,7 +10,7 @@
     <time datetime="@rawDate.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss")" pubdate data-updated="true">@rawDate.ToString("d MMMM yyyy")</time>
 }
 
-@foreach (var post in Enumerable.Take(Model.Posts, 5))
+@foreach (var post in Model.Posts)
 {
     <h3 class="h2link">
         <a href="@Model.Root/blog/@post.Url/index.html">@post.Title</a>

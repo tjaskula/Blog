@@ -123,6 +123,13 @@
                       		}
                       </ul>
 
+                  <h4>Blog archives</h4>
+                  @foreach (var info in @Model.MonthlyPosts)
+                  {
+                    <a href="@(Model.Root + "/blog/archive/" + info.Item2.ToLower() + "-" + info.Item1.ToString() + "/index.html")">
+                      @(info.Item2 + " " + info.Item1.ToString() + " (" + @Enumerable.Count(info.Item3).ToString() + ")")</a>@(",")
+                  }
+
               </article>
         </aside>
       </div>

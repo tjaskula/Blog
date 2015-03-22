@@ -34,7 +34,7 @@ module Blog =
                 select t into t
                 distinct
                 let posts = posts |> Seq.filter (fun p -> p.Tags |> Seq.exists ((=) t))
-                let recent = posts |> Seq.filter (fun p -> p.Date > (DateTime.Now.AddYears(-1))) |> Seq.length
+                let recent = posts |> Seq.filter (fun p -> p.Date > (DateTime.Now.AddYears(-5))) |> Seq.length
                 where (recent > 0)
                 sortByDescending (recent * (Seq.length posts))
                 select (t, urlFriendly t, posts) } 

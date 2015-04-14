@@ -6,7 +6,7 @@
     Tags = "Technical confrence, TechDays speaker, ASP.NET MVC, ASP.NET";
 }
 <br /><br />
-I'm casual speaker at technical conferences and local events. My Lanyrd profile for more details : http://lanyrd.com/profile/tjaskula/
+I'm casual speaker at technical conferences and local events. My Lanyrd profile for more details : [http://lanyrd.com/profile/tjaskula/](http://lanyrd.com/profile/tjaskula/)
 
 ## Conferences
 

@@ -16,6 +16,7 @@ I spoke at the following conferences:
 - **7th-9th February 2012** : Microsoft France Techdays 2012 - Quoi de neuf dans ASP.NET 4.5
 - **8th-10th February 2011** : Microsoft France Techdays 2011 - ASP.NET MVC 3
 
+## Events
 
 I spoke at the following events:
 

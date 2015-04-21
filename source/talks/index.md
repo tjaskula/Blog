@@ -20,4 +20,5 @@ I spoke at the following conferences:
 
 I spoke at the following events:
 
+- **22th-25th April 2013** : IDDD Tour by [Vaugh Vernon](https://twitter.com/vaughnvernon) in Leuven, Belgium. Slides [here](http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project).
 - **March 2012** : ALT.NET - IoC/DI Patterns et antipatterns

@@ -22,3 +22,8 @@ I spoke at the following events:
 
 - **22th-25th April 2013** : IDDD Tour by [Vaugh Vernon](https://twitter.com/vaughnvernon) in Leuven, Belgium. Slides [here](http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project).
 - **March 2012** : ALT.NET - IoC/DI Patterns et antipatterns
+
+## Brown Bag Lunches (BBL)
+
+My Brown Bag Lunch profile : <a href="http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project">http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project</a>
+

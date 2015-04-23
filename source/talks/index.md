@@ -27,3 +27,5 @@ I spoke at the following events:
 
 My Brown Bag Lunch profile : <a href="http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project">http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project</a>
 
+- **January 2015** "Renforcez votre code métier en adaptant F#" SGCIB
+- **November 2014** "Renforcez votre code métier en adaptant F#" Cellenza

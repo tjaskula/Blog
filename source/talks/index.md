@@ -25,7 +25,7 @@ I spoke at the following events:
 
 ## Brown Bag Lunches (BBL)
 
-My Brown Bag Lunch profile : <a href="http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project">http://fr.slideshare.net/tjaskula/leveraging-more-then-ddd-lite-in-the-startup-project</a>
+My Brown Bag Lunch profile : <a href="http://www.brownbaglunch.fr/baggers.html#Tomasz_Jaskula_Paris">http://www.brownbaglunch.fr/baggers.html#Tomasz_Jaskula_Paris</a>
 
 - **January 2015** "Renforcez votre code métier en adaptant F#" at SGCIB
 - **November 2014** "[Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)" at Stokomani

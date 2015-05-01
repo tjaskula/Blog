@@ -27,6 +27,8 @@ I spoke at the following events:
 
 My Brown Bag Lunch profile : <a href="http://www.brownbaglunch.fr/baggers.html#Tomasz_Jaskula_Paris">http://www.brownbaglunch.fr/baggers.html#Tomasz_Jaskula_Paris</a>
 
-- **January 2015** "Renforcez votre code métier en adaptant F#" at SGCIB
-- **November 2014** "[Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)" at Stokomani
-- **November 2014** "Renforcez votre code métier en adaptant F#" at Cellenza
+- **January 2015** "Renforcez votre code métier en adaptant F#" at [SGCIB](https://www.sgcib.com)
+- **January 2015** "[Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)" at [SGCIB](https://www.sgcib.com)
+- **December 2014** "[Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)" at [Vidal](http://www.vidal.fr)
+- **November 2014** "[Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)" at [Stokomani](http://www.stokomani.fr)
+- **November 2014** "Renforcez votre code métier en adaptant F#" at [Cellenza](http://www.cellenza.com)

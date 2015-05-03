@@ -3,7 +3,7 @@
     Title = "Tomasz Jaskula's talks and presentations";
     Date = "2015-04-07T04:02:17";
     Description = "Improve signal, reduce noise = use F#";
-    Tags = "Technical confrence, TechDays speaker, ASP.NET MVC, ASP.NET";
+    Tags = "LambdaDays 2015, Technical confrence, TechDays speaker, ASP.NET MVC, ASP.NET";
 }
 <br /><br />
 I'm casual speaker at technical conferences and local events. My Lanyrd profile for more details : <a href="http://lanyrd.com/profile/tjaskula/">http://lanyrd.com/profile/tjaskula/</a>
@@ -12,6 +12,7 @@ I'm casual speaker at technical conferences and local events. My Lanyrd profile 
 
 I spoke at the following conferences:
 
+- **26th-27th February 2015** : [LambdaDays 2015 Krakow](http://www.lambdadays.org) - Improve the signal, reduce the noise: bring F# to the table. [Slides](http://jaskula.fr/Slides/FSharpSNR.html#/), [Video](https://youtu.be/zGkiWJ-0q7Q)
 - **12th-14th February 2013** : Microsoft France Techdays 2013 - Asp.Net Web Api, SignalR, UX : le futur
 - **7th-9th February 2012** : Microsoft France Techdays 2012 - Quoi de neuf dans ASP.NET 4.5
 - **8th-10th February 2011** : Microsoft France Techdays 2011 - ASP.NET MVC 3

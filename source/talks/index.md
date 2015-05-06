@@ -12,7 +12,8 @@ I'm casual speaker at technical conferences and local events. My Lanyrd profile 
 
 I spoke at the following conferences:
 
-- **26th-27th February 2015** : [LambdaDays 2015 Krakow](http://www.lambdadays.org) - Improve the signal, reduce the noise: bring F# to the table. [Slides](http://jaskula.fr/Slides/FSharpSNR.html#/), [Video](https://youtu.be/zGkiWJ-0q7Q)
+- **8th-10th April 2015** : [Devoxx France](http://www.devoxx.fr) - [Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)
+- **26th-27th February 2015** : [LambdaDays 2015 Krakow](http://www.lambdadays.org) - [Improve the signal, reduce the noise: bring F# to the table.](http://jaskula.fr/Slides/FSharpSNR.html#/), [Video](https://youtu.be/zGkiWJ-0q7Q)
 - **12th-14th February 2013** : Microsoft France Techdays 2013 - Asp.Net Web Api, SignalR, UX : le futur
 - **7th-9th February 2012** : Microsoft France Techdays 2012 - Quoi de neuf dans ASP.NET 4.5
 - **8th-10th February 2011** : Microsoft France Techdays 2011 - ASP.NET MVC 3

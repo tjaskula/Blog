@@ -12,6 +12,7 @@ I'm casual speaker at technical conferences and local events. My Lanyrd profile 
 
 I spoke at the following conferences:
 
+- **21th-22th May 2015** : [NCrafts](http://ncrafts.io) - [Functional programming in C#](http://fr.slideshare.net/tjaskula/functional-programming-in-c-50485195), [Video](http://videos.ncrafts.io/video/130259587)
 - **8th-10th April 2015** : [Devoxx France](http://www.devoxx.fr) - [Recettes CQRS, pour bien cuisiner son architecture](http://fr.slideshare.net/tjaskula/cqr-sv2)
 - **26th-27th February 2015** : [LambdaDays 2015 Krakow](http://www.lambdadays.org) - [Improve the signal, reduce the noise: bring F# to the table.](http://jaskula.fr/Slides/FSharpSNR.html#/), [Video](https://youtu.be/zGkiWJ-0q7Q)
 - **12th-14th February 2013** : Microsoft France Techdays 2013 - Asp.Net Web Api, SignalR, UX : le futur

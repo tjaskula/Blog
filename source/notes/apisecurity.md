@@ -19,6 +19,10 @@
 * Describes user_info, ID token based on JWT
 * Web friendly and modern alternative to SAML web browser SSO
 
+## OAuth
+
+* [Resources and specifications](http://tools.ietf.org/wg/oauth/)
+
 ## Token based authentication
 
 Why?

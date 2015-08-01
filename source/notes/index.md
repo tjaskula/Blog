@@ -17,3 +17,7 @@ This is not an exhaustive list of all the topics I've learnt and because I don't
 ## Security
 
 * [API Security](apisecurity/)
+
+## Data mining
+
+* [Machine Learning](machinelearning/)

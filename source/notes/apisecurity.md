@@ -3,7 +3,7 @@
     Title = "API Security";
     Date = "2015-07-28T17:15:27";
     Tags = "API, Security";
-    Description = " API security and the application of standards such as OAuth and OpenID Connect. " +
+    Description = "API security and the application of standards such as OAuth and OpenID Connect. " +
     			  "API Access Control and API Federation and its interaction with enterprise infrastructure, social identity and application developers.";
 }
 

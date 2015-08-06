@@ -34,7 +34,7 @@ Obviously I have installed the TeamCity server v9.1 and I don't have the **TEAMC
 
 ## NDepend TeamCity plugin configuration
 
-If you follow [NDepend documentation](http://www.ndepend.com/docs/teamcity-integration-ndepend) setting up the NDepend build step is rather strightforward. Don't forget to change paths inside your NDepend project from absolute to relative. Remember that your build server may have different paths than those definied on your development machine. That's why relative paths are very handy. You can achieve it very easily, by going to your Ndepend project properties, then clicking on the **Paths Referenced** tab and then right clicking on absolute paths and selecting **Set as Path Relative** option from the menu.
+If you follow [NDepend documentation](http://www.ndepend.com/docs/teamcity-integration-ndepend) setting up the NDepend build step is rather strightforward. Don't forget to change paths inside your NDepend project from absolute to relative. Remember that your build server may have different paths than those definied on your development machine. That's why relative paths are very handy. You can achieve it very easily, by going to your Ndepend project properties, clicking on the **Paths Referenced** tab and then right clicking on the listed paths and selecting **Set as Path Relative** option from the menu.
 
 ![NDepend menu](img/NDependMenuAbsToRelPath.png)
 
@@ -44,3 +44,25 @@ Once the change is done and commited, I've add NDepend build step to my build pr
 
 ## Running the first build
 
+We're are finaly ready to run our first build with NDepend step. The whole **NDepend plugin configuration step inside TeamCity took me something like 10 min!** It's really a pice of cake!
+
+Let's check the output of the first run:
+
+<a href="img/TeamCityBuildwithNDependDefaults.png"><img alt="TeamCity result of build run with NDepend plugin" src="img/TeamCityBuildwithNDependDefaults.png" width="600"></a>
+
+1. The build has failed because of NDepend exception. When the static analysis detects that critical rules are violated then the build fails. NDepend plugin maps rules violations to the TeamCity code inspections and errors. Rules violations are mapped as TeamCity code inspections and critical rules violations are mapped as errors.
+1. Total number of problems detected during the NDepend analysis. These are visible in the TeamCity code insepctions tab (step number 3).
+1. The list of code inspections as a result of NDepend analysis. You can browse through all the problems detected by NDepend. Clicking on the details of the problem it brings you directly to opened Visual Studio solution.
+<a href="img/TeamCityNDependCodeIns.png"><img alt="TeamCity Code Inspections NDepend" src="img/TeamCityNDependCodeIns.png" width="600"></a>
+1. NDepend report is accessible in it's own tab! Awesome!
+<a href="img/TeamCityNDependReport.png"><img alt="TeamCity NDepend report" src="img/TeamCityNDependReport.png" width="600"></a>
+
+As a bonus, NDepend output is available as a TeamCity artifact so you can download it if needed.
+
+<a href="img/NDependArtifact.png"><img alt="NDepend output artifact" src="img/NDependArtifact.png" width="600"></a>
+
+In the Build Configuration settings, you can also set build failure upon rules and critical rules violations values. This may be usefull if you want the build fail because of the evolution of the NDepend metric change.
+
+## Going further with NDepend plugin configuration
+
+NDepend has more usefull features that would be interesting to configure on the TeamCity build server.

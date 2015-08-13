@@ -1,7 +1,7 @@
 @{
     Layout = "post";
     Title = "Integrating NDepend with TeamCity 9";
-    Date = "2015-08-08T02:51:22";
+    Date = "2015-08-14T00:10:22";
     Tags = "NDepend, TeamCity";
     Description = "The goal of this post is to check how easy is the integration of NDepend plugin into the TeamCity 9 build server.";
 }
@@ -9,14 +9,14 @@
 <div class="row">
 <div class="medium-8 columns">
 
-The [NDepend 6](http://www.ndepend.com) was released a couple of weeks ago. It comes along with really exciting new features like for example Visual Studio 2015 integration, analysis enhancements, async support, etc. Take a look at NDepend website to have a full list of new features. The feature I'm interested in is the [TeamCity](https://www.jetbrains.com/teamcity/) integration which should be very easy to do according to NDepend team.
+The [NDepend 6](http://www.ndepend.com) was released a couple of weeks ago. It comes along with really exciting new features like for example Visual Studio 2015 integration, analysis enhancements, async support, etc. Take a look at NDepend website to have a full list of new features. The feature I'm interested in is the [TeamCity](https://www.jetbrains.com/teamcity/) integration which should be very easy to do according to NDepend's team.
 
 </div>
 </div>
 
 <!-- more -->
 
-If you use C# as your main programming language and you have already worked on a quite big project you know how painful is to enforce coding rules and to query about dependencies without a right tool. NDepend is a static analysis tool that helps you digging into your code in a very easy and effective way to carry-out code rules checks, code quality checks, comparing two versions of code base and browsing for differences and many more. This is something that you should have in your tool belt. If you're working on medium to large project you are supposed to have a build server and a sort of Continous Integration process. I'm using TeamCity 9 for my projects. It would be nice to take advantage of NDepend static code base analysis inside your CI build. It was always possible to integrate NDepend into your build process in TeamCity but it was quite tedious. NDepend 6 comes with this new shiny TeamCity plugin (for TeamCity 8 and 9) and I decided to give it a shot. Let's try it out and check if this is easier to do than before.
+If you use C# as your main programming language and you have already worked on a quite big project you know how painful is to enforce coding rules and to query about dependencies if you don't have right tool. NDepend is a static analysis tool that helps you digging into your code in a very easy and efficient way to carry-out code rules checks, code quality checks, comparing two versions of code base, browsing for differences and many more. This is something that you should have in your tool belt. If you're working on medium to large project you are supposed to have a build server and a sort of Continous Integration process. I'm using TeamCity 9 for my projects. It would be nice to take advantage of NDepend static code base analysis inside your CI build. It was always possible to integrate NDepend into your build process in TeamCity but it was quite tedious. NDepend 6 comes with this new shiny TeamCity plugin (for TeamCity 8 and 9) and I decided to give it a shot. Let's try it out and check if this is easier to do than before.
 
 ## NDepend TeamCity plugin installation
 
@@ -65,6 +65,18 @@ In the Build Configuration settings, you can also set build failure upon rules a
 
 ## More NDepend features for free
 
-Of course you don't need to work that hard to get others usefull NDepend feature for free. I'm talking about Baseline comparison and code coverage. All you need to do is to configure it in the NDepend project properties
+Of course you don't need to work that hard to get others usefull NDepend feature for free. I'm talking about comparison of differences between two different NDepend analysis and code coverage. For the code coverage all you need to do is to configure it in the NDepend project properties. For the code comparison you have to chose a value in the NDepend build step on TeamCity for "baseline for comparison". I've selected "The last successful build" so the effect will be the comparison between the current build and the last successful one. You have to set also the right value in the NDepend project properties like below:
 
-<a href="img/NDependProjectConf.png.png"><img alt="Configuring NDepend project properties" src="img/NDependProjectConf.png.png" width="600"></a>
+<a href="img/NDependProjectConf.png"><img alt="Configuring NDepend project properties" src="img/NDependProjectConf.png" width="600"></a>
+
+Once it's done, you run the build and check the build output. You should see baseline for comparison and code coverage picked up by the build like on the picture below:
+
+<a href="img/NDependBaselinePlusCoverage.png"><img alt="NDepend build output with baseline comparison" src="img/NDependBaselinePlusCoverage.png" width="600"></a>
+
+You should also see on the NDepend tab, the code metrics of the current build (brown letters) and how it compares to the previous analysis (grey letters).
+
+<a href="img/NDependMetrics.png"><img alt="NDepend build output metrics" src="img/NDependMetrics.png" width="600"></a>
+
+## Summary
+
+What to say? The NDepend plugin is just so easy to install compared to the manual process I had to do with the previous versions. This is a really nice feature to have on your CI server. TeamCity NDepend plugin test: PASSED!

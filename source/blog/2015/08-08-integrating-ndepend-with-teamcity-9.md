@@ -63,6 +63,8 @@ As a bonus, NDepend output is available as a TeamCity artifact so you can downlo
 
 In the Build Configuration settings, you can also set build failure upon rules and critical rules violations values. This may be usefull if you want the build fail because of the evolution of the NDepend metric change.
 
-## Going further with NDepend plugin configuration
+## More NDepend features for free
 
-NDepend has more usefull features that would be interesting to configure on the TeamCity build server.
+Of course you don't need to work that hard to get others usefull NDepend feature for free. I'm talking about Baseline comparison and code coverage. All you need to do is to configure it in the NDepend project properties
+
+<a href="img/NDependProjectConf.png.png"><img alt="Configuring NDepend project properties" src="img/NDependProjectConf.png.png" width="600"></a>

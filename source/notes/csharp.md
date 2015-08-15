@@ -11,12 +11,53 @@
 
 # C# Language
 
-## Polymporphisme
+## Object Orientation
+Object-orientation paradigm, includes:
+
+* encapsulation
+* inheritance
+* polymorphisme
+
+### Encapsulation
+Means creating a boundary around *object*, to separate external (public) behavior from its internal (private) implementation details.
+
+### Polymporphisme
+
 * Une instance de type x peut se référer à un object qui souclasse x
 * Upcast : => vers la référence de classe de base (Implicit)
 * Downcast : => vers la référence dela souclasse (Explicit)
 
+## Characteristics of C#
+C# is:
+
+* Type-safe : cannot interact with `string` as it was an `integer`
+* Staticly-typed : language enforces type safety at compile time
+* Strongly-types : cannot get around the restrictions the constraints of the type system like for example calling a function that's designed to accept an integer with a floating-point number, unless you first *explicitly* convert floating-point number to an integer.
+
 ## Object
+
+### Value and Reference Types
+
+*Value types* : numeric types, `char` type, `bool` type, `struc` and `enum` types.
+
+*Reference types* : all class, array, delegate and interface types.
+
+#### Value types
+The content of a *value type* variable or constant is simply a value.
+
+Numeric types
+
+* Integral : `sbyte` (8bits), `short` (16 bits), `int` (32 bits), `long` (64 bits).
+* Real : `float` (32 bits, $10^{-45}$ to $10^{38}$), `double` (64 bits, $10^{-324}$ to $10^{308}$), `decimal` (128 bits, $10^{-28}$ to $10^{28}$)
+
+`decimal` is non-native to processor (about 10 times slower than `double`)
+
+> The arithmetic operators (+, -, *, /, %) are definied for all numeric types except the 8- and 16-bit integral types. So C# converts them to larger types as required.
+
+#### Reference types
+Reference types have two parts: an *object* and the *reference* to that object. The content of a reference-type variable or constant is a reference to an object that contains the value.
+Reference types requires spearate allocations of membory for the reference and the object. The object consumes as many bytes as its fields plus aditional administrative overhead.
+
 ### Boxing : value-type => reference
 
 [When does the implicit boxing occurs?](http://theburningmonk.com/2015/07/beware-of-implicit-boxing-of-value-types/)

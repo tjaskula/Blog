@@ -1,6 +1,6 @@
 @{
     Layout = "page";
-    Title = "C# Language learning notes";
+    Title = "C# Language learning notes. Only things I have to remember.";
     Date = "2015-07-23T15:57:27";
     Tags = "C#";
     Description = "C# language learning notes. C# (pronounced as see sharp) is a multi-paradigm programming language encompassing strong typing, " +
@@ -18,14 +18,18 @@ Object-orientation paradigm, includes:
 * inheritance
 * polymorphisme
 
+### Inheritance
+
+A class can *inherit* from another class to extend or customize the original class.
+
 ### Encapsulation
 Means creating a boundary around *object*, to separate external (public) behavior from its internal (private) implementation details.
 
 ### Polymporphisme
 
-* Une instance de type x peut se référer à un object qui souclasse x
-* Upcast : => vers la référence de classe de base (Implicit)
-* Downcast : => vers la référence dela souclasse (Explicit)
+* An instance of type x can refer to the object that subclasses x
+* Upcast : => to the reference of the base class (Implicit)
+* Downcast : => to the reference of the subclass (Explicit)
 
 ## Characteristics of C#
 C# is:
@@ -58,6 +62,13 @@ Numeric types
 Reference types have two parts: an *object* and the *reference* to that object. The content of a reference-type variable or constant is a reference to an object that contains the value.
 Reference types requires spearate allocations of membory for the reference and the object. The object consumes as many bytes as its fields plus aditional administrative overhead.
 
+
+#### The Stack and the Heap
+
+*Stack* is a block of memory for storing local variables and parameters. the stack logically grows and shrinks as a function is entered and exited.
+
+*Heap* is a block of memory where `objects` (i.e., reference-type instances) reside. GC scans only heap.
+
 ### Boxing : value-type => reference
 
 [When does the implicit boxing occurs?](http://theburningmonk.com/2015/07/beware-of-implicit-boxing-of-value-types/)
@@ -85,16 +96,68 @@ Fortunately, the CLR is able to short-circuit this by calling the method directl
 In both cases, it's invoked through the `IEqualityComparer<T>` type we talked earlier, and in both cases the comparer is also initialized through `EqualityComparer<T>.Default` and the `CreateComparer` method.
 `GetHashCode` is invoked in many places within `Dictionary<TKey, TValue>` - on `Add`, `ContainsKey`, `Remove`, etc.
 
-### Unboxing : reference type => value-type
-### Struct : pas de constructeur sans paramètres, peut implémenter les interfaces mais pas hériter des classes
-### Enum : constantes numériques goupées et nommées
-### Nested types : peut accéder aux types privés du type contenant
+* Interfaces and Boxing
 
-## Generics
-* templates de types
-* type safety et réduction de boxing/unboxing
-* covariant for OUT Subclass to Base
-* contravarient for IN Base to Subclass
+Casting a struct to an interface causes boxing. Callin an implicitly implemented member on a struct des not cause boxing.
+
+### Unboxing : reference type => value-type
+
+## Creating types
+
+### Constructors
+
+Constructor with optional parameters may be problematic if it is instantiated from another assemblie. If we add another optional parameter we have to recompile all consuming assemblies because they will continue to call the non existing constructor and fail at runtime. the subtler problem is when we change a value of one of the optional parameters, the callers will continue to call with the old value until they are recompiled. Hence **avoid optional parameters in public functions**.
+
+A static constructor executes once per *type*, rather than once per *instance*. A type can define only one static constructor, and it must be parameterless and have the same name as thr type. The constructor is triggerted either by:
+
+* Instantiating the type
+* Accessing a static member in the type
+
+If type has static fields, they will be initialized *before* the static constructor.
+
+### Abstract classes
+
+A class declared as *abstract* can never be instantiated. Instead, only its concrete *subclasses* can be instantiated.
+
+### Structs
+
+A `struct` is similar to a class with the following key differences:
+
+* A struct is a value type, whereas a class is a reference type.
+* A struct does not support inheritance (other than implicitly deriving from `object`, or more precisely, `System.ValueType`).
+
+A struct can have all the mebers a class can, except the following:
+
+* A parameterless constructor
+* A finalizer
+* Virtual members
+
+Struct can implement interfaces.
+
+### Constants
+
+Difference between `consts` and `static readonly`: A `static readonly` field is avantageous when exposing to other assemblies a value that might change in a later version. For instance, suppose assembly X exposes a constant as follows: `public const int MaximumThreads = 20;`. If assembly Y references X and uses this constant, the value 20 will be baked into the assembly Y when compiled. This means that if X is later recompiled with the constant set to 50, Y will still use the old value *until* Y is *recompiled*. A `static readonly` field avoids this problem. 
+
+### Enums
+
+Numeric constants grouped and named. By default its underlying values are of type `int`. You may specify an alternative integral type (`byte`, `long`, etc.)
+`[Flag]` enums can combine enum members. To prevent ambiguities, members of a combinable enum require explicitly assigned values, typically in powers of two.
+
+### Nested types
+
+Can access the private members of containing type.
+
+### Generics
+
+* Types templates
+* type safety and reduction of boxing/unboxing
+
+#### Covariance and Contravariance
+
+As of C# 4.0 generic interfaces permit covariance (as do generic delegates), but generic classes do not. Arrays also support covariance. Contravariance is only supported with the generic interfaces.
+
+* Covariant for OUT Subclass to Base
+* Contravarient for IN Base to Subclass
 
 ## Delegates
 * découple l'appellant de la méthode cible

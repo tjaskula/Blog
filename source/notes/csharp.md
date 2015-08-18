@@ -104,6 +104,13 @@ Casting a struct to an interface causes boxing. Callin an implicitly implemented
 
 ## Creating types
 
+### Writing a Class Versus an Interface
+
+As a guideline:
+
+* Use classes and subclasses for types that naturally share an implementation.
+* Use interfaces for types that have independent implementations.
+
 ### Constructors
 
 Constructor with optional parameters may be problematic if it is instantiated from another assemblie. If we add another optional parameter we have to recompile all consuming assemblies because they will continue to call the non existing constructor and fail at runtime. the subtler problem is when we change a value of one of the optional parameters, the callers will continue to call with the old value until they are recompiled. Hence **avoid optional parameters in public functions**.
@@ -114,6 +121,33 @@ A static constructor executes once per *type*, rather than once per *instance*. 
 * Accessing a static member in the type
 
 If type has static fields, they will be initialized *before* the static constructor.
+
+### Method overloading
+
+Inheritance has an interesting impact on method overloading. Consider the following two overloads:
+
+	[lang=csharp]
+	static void Foo (Asset a) { }
+	static void Foo (House h) { }
+
+When an overload is called, the most specific type has precedence:
+
+	[lang=csharp]
+	House h = new House (...);
+	Foo(h); // Calls Foo(House)
+
+The particular overload to call is **determined statically (at compile time)** rather than at runtime.
+The following code calls Foo(Asset), even though the runtime type of a is House:
+
+	[lang=csharp]
+	Asset a = new House (...);
+	Foo(a); // Calls Foo(Asset)
+
+> If you cast Asset to dynamic , the decision as to which overload to call is deferred until runtime, and is then based on the object’s actual type:
+
+	[lang=csharp]
+	Asset a = new House (...);
+	Foo ((dynamic)a); // Calls Foo(House)
 
 ### Abstract classes
 

@@ -116,6 +116,219 @@ $$$
 
 where m is the size of the training set, $\theta_0$ a constant that will be changing simultaneously with $\theta_1$ and $x_{i}, y_{i}$ are values of the given training set (data).
 
+#### Linear Regression with Multiple Variables
+
+For more information, please refer to the Coursera wiki (login required): https://share.coursera.org/wiki/index.php/ML:Linear_Regression_with_Multiple_Variables
+
+* **Multiple Features**
+
+Linear regression with multiple variables is also known as "multivariable linear regression."
+
+the multivariable form of the hypothesis function as follows, accomodating these multiple features:
+
+$$$
+h_\theta (x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \cdots + \theta_n x_n
+
+Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:
+
+$$$
+\begin{align*}
+h_\theta(x) =
+\begin{bmatrix}
+\theta_0 \hspace{2em}  \theta_1 \hspace{2em}  ...  \hspace{2em}  \theta_n
+\end{bmatrix}
+\begin{bmatrix}
+x_0 \newline
+x_1 \newline
+\vdots \newline
+x_n
+\end{bmatrix}
+= \theta^T x
+\end{align*}
+
+Now we can collect all $m$ training examples each with $n$ features and record them in an $n+1$ by $m$ matrix.
+
+$$$
+\begin{align*}
+X =
+\begin{bmatrix}
+x^{(1)}_0 \hspace{2em} x^{(2)}_0\hspace{2em}  ... \hspace{2em} x^{(m)}_0 \newline
+x^{(1)}_1 \hspace{2em} x^{(2)}_1 \hspace{2em} ... \hspace{2em} x^{(m)}_1 \newline
+\vdots \newline
+x^{(1)}_n \hspace{2em} x^{(2)}_n \hspace{2em} ... \hspace{2em} x^{(m)}_n \newline
+\end{bmatrix} 
+&=
+\begin{bmatrix}
+1 & 1 &  ... & 1 \newline
+x^{(1)}_1 & x^{(2)}_1 &... & x^{(m)}_1 \newline
+\vdots \newline
+x^{(1)}_n & x^{(2)}_n & ... & x^{(m)}_n \newline
+\end{bmatrix} 
+\end{align*}
+
+Notice above that the first column is the first training example (like the vector above), the second column is the second training example, and so forth.
+
+Now we can define $h_\theta(X)$ as a row vector that gives the value of $h_\theta(x)$ at each of the $m$ training examples:
+
+$$$
+\begin{align*}
+h_\theta(X) =
+\begin{bmatrix}
+\theta_0 x^{(1)}_0 + \theta_1 x^{(1)}_1 + ... + \theta_n x^{(1)}_n \hspace{3em}
+\theta_0 x^{(2)}_0 + \theta_1 x^{(2)}_1 + ... + \theta_n x^{(2)}_n \hspace{3em} ... \hspace{3em}
+\theta_0  x^{(m)}_0 + \theta_1 x^{(m)}_1 + ... + \theta_n x^{(m)}_n \newline
+\end{bmatrix}
+\end{align*}
+
+But again using the definition of matrix multiplication, we can represent this more concisely:
+
+$$$
+\begin{align*}
+h_\theta(X) =
+\begin{bmatrix}
+\theta_0 \hspace{2em}  \theta_1 \hspace{2em} ... \hspace{2em} \theta_n
+\end{bmatrix}
+\begin{bmatrix}
+x^{(1)}_0 \hspace{2em} x^{(2)}_0\hspace{2em}  ... \hspace{2em} x^{(m)}_0 \newline
+x^{(1)}_1 \hspace{2em} x^{(2)}_1 \hspace{2em} ... \hspace{2em} x^{(m)}_1 \newline
+\vdots \newline
+x^{(1)}_n \hspace{2em} x^{(2)}_n \hspace{2em} ... \hspace{2em} x^{(m)}_n \newline
+\end{bmatrix}=
+\theta^T X
+\end{align*}
+
+Note: this version of the hypothesis function assumes the matrix $X$ and vector $\theta$ store their values as follows:
+
+$$$
+\begin{align*}
+X = 
+\begin{bmatrix}
+x^{(1)}_0 & x^{(2)}_0 & x^{(3)}_0  \newline
+x^{(1)}_1 & x^{(2)}_1 & x^{(3)}_1 
+\end{bmatrix}
+&
+,\theta = 
+\begin{bmatrix}
+\theta_0 \newline
+\theta_1 \newline
+\end{bmatrix}
+\end{align*}
+
+You might instead store the training examples in $X$ row-wise, like such:
+
+$$$
+\begin{align*}
+X = 
+\begin{bmatrix}
+x^{(1)}_0 & x^{(1)}_1  \newline
+x^{(2)}_0 & x^{(2)}_1  \newline
+x^{(3)}_0 & x^{(3)}_1 
+\end{bmatrix}
+&
+,\theta = 
+\begin{bmatrix}
+\theta_0 \newline
+\theta_1 \newline
+\end{bmatrix}
+\end{align*}
+
+In which case you would calculate the hypothesis function with:
+
+$$$
+h_\theta(X) = X \theta
+
+* **Cost function**
+
+$$$
+J(\theta) = \dfrac {1}{2m} \displaystyle \sum_{i=1}^m \left (h_\theta (x^{(i)}) - y^{(i)} \right)^2
+
+The vectorized version is:
+
+$$$
+J(\theta) = \dfrac {1}{2m} (X\theta - \vec{y})^{T} (X\theta - \vec{y})
+
+* **Gradient Descent for Multiple Variables**
+
+The gradient descent equation itself is generally the same form; we just have to repeat it for our 'n' features:
+
+$$$
+\begin{align*}
+& \text{repeat until convergence:} \; \lbrace \newline 
+\; & \theta_0 := \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_0^{(i)}\newline
+\; & \theta_1 := \theta_1 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_1^{(i)} \newline
+\; & \theta_2 := \theta_2 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_2^{(i)} \newline
+& \cdots
+\newline \rbrace
+\end{align*}
+
+In other words:
+
+$$$
+\begin{align*}
+& \text{repeat until convergence:} \; \lbrace \newline 
+\; & \theta_j := \theta_j - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)} \;  & \text{for j := 0..n}
+\newline \rbrace
+\end{align*}
+
+Finally, the matrix notation (vectorized) of the Gradient Descent rule is:
+
+$$$
+\large
+\theta := \theta - \frac{\alpha}{m} X^{T} (X\theta - \vec{y})
+
+* **Gradient Descent in Practice**
+
+We can speed up gradient descent by having each of our input values in roughly the same range. This is because $\theta$ will descend quickly on small ranges and slowly on large ranges, and so will oscillate inefficiently down to the optimum when the variables are very uneven.
+
+The way to prevent this is to modify the ranges of our input variables so that they are all roughly the same. Ideally:
+
+$$$
+-1 \le x_i \le 1
+
+or:
+
+$$$
+-0.5 \le x_i \le 0.5
+
+These aren't exact requirements; we are only trying to speed things up. The goal is to get all input variables into roughly one of these ranges, give or take a few.
+
+Two techniques to help with this are **feature scaling** and **mean normalization**. Feature scaling involves dividing the input values by the range (i.e. the maximum value minus the minimum value) of the input variable, resulting in a new range of just 1. Mean normalization involves subtracting the average value for an input variable from the values for that input variable, resulting in a new average value for the input variable of just zero. To implement both of these techniques, adjust your input values as shown in this formula:
+
+$$$
+x_i := \dfrac{x_i - \mu_i}{s_i}
+
+Example: xi is housing prices in range 100-2000. Then, $x_i := \dfrac{price-1000}{1900}$, where 1000 is the average price and 1900 is the maximum (2000) minus the minimum (100).
+
+* **Features and Polynomial Regression**
+
+We can improve our features and the form of our hypothesis function in a couple different ways.
+
+We can combine multiple features into one. For example, we can combine $x_1$ and $x_2$ into a new feature $x_3$ by taking $x_1 \cdot x_2$.
+
+**Polynomial Regression**
+
+Our hypothesis function need not be linear (a straight line) if that does not fit the data well.
+
+We **can change the behavior or curve** of our hypothesis function by making it a quadratic, cubic or square root function (or any other form).
+
+* **Normal Equation**
+
+The "normal equation" is a version of finding the optimum **without iteration**.
+
+$$$
+\large
+\theta = (X^T X)^{-1}X^T y
+
+There is **no need to do feature scaling** with the normal equation.
+
+| **Gradient Descent**        | **Normal Equation**           |
+| --------------------------- |:-----------------------------:|
+| Need to choose alpha        | No need to choose alpha       |
+| Needs many iterations       | No need to iterate            |
+| Works well when n is large  | Slow if n is very large       |
+
+With the normal equation, computing the inversion has complexity $\mathcal{O}(n^3)$. So if we have a very large number of features, the normal equation will be slow. In practice, according to A. Ng, when $n$ exceeds 10,000 it might be a good time to go from a normal solution to an iterative process.
+
 ### Unsupervised Learning
 
 Unsupervised learning, on the other hand, allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.

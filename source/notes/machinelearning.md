@@ -329,11 +329,279 @@ There is **no need to do feature scaling** with the normal equation.
 
 With the normal equation, computing the inversion has complexity $\mathcal{O}(n^3)$. So if we have a very large number of features, the normal equation will be slow. In practice, according to A. Ng, when $n$ exceeds 10,000 it might be a good time to go from a normal solution to an iterative process.
 
+#### Logistic Regression
+
+For more information, please refer to the Coursera wiki (login required): https://share.coursera.org/wiki/index.php/ML:Logistic_Regression
+
+It's about **classification problems.**
+
+* **Classification**
+
+Instead of our output vector $y$ being a continuous range of values, it will only be 0 or 1.
+
+$$$
+\large
+y \in \lbrace 0,1 \rbrace
+
+Where 0 is usually taken as the "negative class" and 1 as the "positive class", but you are free to assign any representation to it.
+
+One method is to use linear regression and map all predictions greater than 0.5 as a 1 and all less than 0.5 as a 0. This method doesn't work well because classification is not actually a linear function.
+
+* **Hypothesis Representation**
+
+Hypothesis should satisfy:
+
+$$$
+\large
+0 \leq h_\theta (x) \leq 1
+
+The new form uses the "Sigmoid Function," also called the "Logistic Function":
+
+$$$
+\large
+\begin{align*}
+& h_\theta (x) =  g ( \theta^T x ) \newline \newline
+& z = \theta^T x \newline
+& g(z) = \dfrac{1}{1 + e^{-z}}
+\end{align*}
+
+The function g(z) maps any real number to the (0, 1) interval, making it useful for transforming an arbitrary-valued function into a function better suited for classification.
+
+$h_\theta$ will give us the probability that our output is 1. For example, $h_\theta(x)=0.7$ gives us the probability of 70% that our output is 1.
+
+$$$
+\large
+\begin{align*}
+& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline
+& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1
+\end{align*}
+
+Our probability that our prediction is 0 is just the opposite of our probability that it is 1 (e.g. if probability that it is 1 is 70%, then the probability that it is 0 is 30%).
+
+* **Decision Boundary**
+
+In order to get our discrete 0 or 1 classification, we can translate the output of the hypothesis function as follows:
+
+$$$
+\begin{align*}
+& h_\theta(x) \geq 0.5 \rightarrow y = 1 \newline
+& h_\theta(x) < 0.5 \rightarrow y = 0 \newline
+\end{align*}
+
+The way our logistic function $g$ behaves is that when its input is greater than or equal to zero, its output is greater than or equal to 0.5:
+
+$$$
+\begin{align*}
+& g(z) \geq 0.5 \newline
+& when \; z \geq 0
+\end{align*}
+
+The **decision boundary** is the line that separates the area where y=0 and where y=1. It is created by our hypothesis function.
+
+Again, the input to the sigmoid function $g(z)$ (e.g. $\theta^T X$) need not be linear, and could be a function that describes a circle (e.g. $z = \theta_0 + \theta_1 x_1^2 +\theta_2 x_2^2$) or any shape to fit our data.
+
+* **Cost Function**
+
+We cannot use the same cost function that we use for linear regression because the Logistic Function will cause the output to be wavy, causing many local optima. In other words, it will not be a convex function.
+
+Instead, our cost function for logistic regression looks like:
+
+$$$
+\large
+\begin{align*}
+& J(\theta) = \dfrac{1}{m} \sum_{i=1}^m \mathrm{Cost}(h_\theta(x^{(i)}),y^{(i)}) \newline
+& \mathrm{Cost}(h_\theta(x),y) = -\log(h_\theta(x)) \; & \text{if y = 1} \newline
+& \mathrm{Cost}(h_\theta(x),y) = -\log(1-h_\theta(x)) \; & \text{if y = 0}
+\end{align*}
+
+The more our hypothesis is off from y, the larger the cost function output. If our hypothesis is equal to y, then our cost is 0:
+
+$$$
+\begin{align*}
+& \mathrm{Cost}(h_\theta(x),y) = 0 \text{  if  } h_\theta(x) = y \newline
+& \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{  if  } y = 0 \; \mathrm{and} \; h_\theta(x) \rightarrow 1 \newline
+& \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{  if  } y = 1 \; \mathrm{and} \; h_\theta(x) \rightarrow 0 \newline
+\end{align*}
+
+If our correct answer 'y' is 0, then the cost function will be 0 if our hypothesis function also outputs 0. If our hypothesis approaches 1, then the cost function will approach infinity.
+If our correct answer 'y' is 1, then the cost function will be 0 if our hypothesis function outputs 1. If our hypothesis approaches 0, then the cost function will approach infinity.
+
+
+* **Simplified Cost Function and Gradient Descent**
+
+We can compress our cost function's two conditional cases into one case:
+
+$$$
+\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))
+
+A vectorized implementation is:
+
+$$$
+\large
+J\left(\theta\right)  =  -\frac{1}{m}\left(\log\left(g\left(X\theta\right)\right)^{T}y+\log\left(1-g\left(X\theta\right)\right)^{T}\left(1-y\right)\right)
+
+** Gradient Descent**
+
+Remember that the general form of gradient descent is:
+
+$$$
+\begin{align*}
+& Repeat \; \lbrace \newline
+& \; \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta) \newline
+& \rbrace
+\end{align*}
+
+We can work out the derivative part using calculus to get:
+
+$$$
+\begin{align*}
+& Repeat \; \lbrace \newline
+& \; \theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \newline & \rbrace
+\end{align*}
+
+A vectorized implementation is:
+
+$$$
+\large
+\theta := \theta - \frac{\alpha}{m} X^{T} (g(X \theta ) - \vec{y})
+
+* **Multiclass Classification: One-vs-all**
+
+Now we will approach the classification of data into more than two categories. Instead of y = {0,1} we will expand our definition so that y = {0,1...n}.
+
+In this case we divide our problem into n+1 binary classification problems; in each one, we predict the probability that 'y' is a member of one of our classes.
+
+$$$
+\large
+\begin{align*}
+& y \in \lbrace0, 1 ... n\rbrace \newline
+& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline
+& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline
+& \cdots \newline
+& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline
+& \mathrm{prediction} = \max_i( h_\theta ^{(i)}(x) )\newline
+\end{align*}
+
+We are basically choosing one class and then lumping all the others into a single second class. We do this repeatedly, applying binary logistic regression to each case, and then use the hypothesis that returned the highest value as our prediction.
+
+#### Regularization
+
+* **The Problem of Overfitting**
+
+Regularization is designed to address the problem of overfitting.
+
+**High bias** or **underfitting** is when the form of our hypothesis maps poorly to the trend of the data. It is usually caused by a function that is too simple or uses too few features.
+
+At the other extreme, **overfitting** or **high variance** is caused by a hypothesis function that fits the available data but does not generalize well to predict new data. It is usually caused by a complicated function that creates a lot of unnecessary curves and angles unrelated to the data.
+
+There are two **main** options to address the issue of overfitting:
+
+1. Reduce the number of features.
+  * Manually select which features to keep.
+  * Use a model selection algorithm
+2. Regularization
+  * Keep all the features, but reduce the parameters $\theta_j$.
+
+Regularization works well when we have a lot of slightly useful features.
+
+* **Cost Function**
+
+If we have overfitting from our hypothesis function, we can reduce the weight that some of the terms in our function carry by increasing their cost.
+
+Say we wanted to make the following function more quadratic:
+
+$$$
+\theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3 + \theta_4x^4
+
+We'll want to eliminate the influence of $\theta_3 x3$ and $\theta_4 x4. Without actually getting rid of these features or changing the form of our hypothesis, we can instead modify our **cost function**:
+
+$$$
+min_\theta\ \dfrac{1}{2m}\sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + 1000\cdot\theta_3^2 + 1000\cdot\theta_4^2
+
+We've added two extra terms at the end to inflate the cost of $\theta_3$ and $\theta_4$. Now, in order for the cost function to get close to zero, we will have to reduce the values of $\theta_3$ and $\theta_4$ to near zero. This will in turn greatly reduce the values of $\theta_3x^3$ and $\theta_4x^4$ in our hypothesis function.
+
+$$$
+min_\theta\ \dfrac{1}{2m}\ \left[ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + \lambda\ \sum_{j=1}^n \theta_j^2 \right]
+
+The $\lambda$, or lambda, is the **regularization parameter**. It determines how much the costs of our theta parameters are inflated.
+
+Using the above cost function with the extra summation, we can smooth the output of our hypothesis function to reduce overfitting. If lambda is chosen to be too large, it may smooth out the function too much and cause underfitting.
+
+* **Regularized Linear Regression**
+
+We can apply regularization to both linear regression and logistic regression. We will approach linear regression first.
+
+**Gradient Descent**
+
+We will modify our gradient descent function to separate out $\theta_0$ from the rest of the parameters because we do not want to penalize $\theta_0$.
+
+$$$
+\begin{align*}
+& \text{Repeat}\ \lbrace \newline
+& \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline
+& \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline
+& \rbrace
+\end{align*}
+
+Update rule would look like:
+
+$$$
+\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}
+
+The first term in the above equation, $1 - \alpha\frac{\lambda}{m}$ will always be less than 1.
+
+**Normal Equation**
+
+To add in regularization, the equation is the same as our original, except that we add another term inside the parentheses:
+
+$$$
+\begin{align*}
+& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline
+& \text{where}\ \ L = 
+\begin{bmatrix}
+ 0 & & & & \newline
+ & 1 & & & \newline
+ & & 1 & & \newline
+ & & & \ddots & \newline
+ & & & & 1 \newline
+\end{bmatrix}
+\end{align*}
+
+* **Regularized Logistic Regression**
+
+We can regularize logistic regression in a similar way that we regularize linear regression. Let's start with the cost function.
+
+**Cost Function**
+
+Original cost function:
+
+$$$
+(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)})) \large]
+
+Regularized:
+
+$$$
+J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2
+
+**Gradient Descent**
+
+$$$
+\begin{align*}
+& \text{Repeat}\ \lbrace \newline
+& \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline
+& \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline
+& \rbrace
+\end{align*}
+
+This is identical to the gradient descent function presented for linear regression.
+
 ### Unsupervised Learning
 
 Unsupervised learning, on the other hand, allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
 We can derive this structure by **clustering** the data based on relationships among the variables in the data.
 With unsupervised learning there is no feedback based on the prediction results, i.e., there is no teacher to correct you. It’s not just about clustering. For example, associative memory is unsupervised learning.
+
+This terminology is applied to both linear and logistic regression.
 
 **Example**:
 

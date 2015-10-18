@@ -821,6 +821,65 @@ y^{(i)} = \begin{bmatrix}1\newline 0\newline 0\newline 0\end{bmatrix}
 
 Our final value of our hypothesis for a set of inputs will be one of the elements in y.
 
+#### Neural Networks: Learning
+
+For more information, please refer to the Coursera wiki (login required): https://share.coursera.org/wiki/index.php/ML:Neural_Networks:_Learning
+
+* **Cost function**
+
+In neural networks, we may have many output nodes.
+
+For neural networks, the cost function is going to be slightly more complicated then for regularized logistic regression:
+
+$$$
+\begin{gather*}
+\large
+J(\Theta) = - \frac{1}{m} \left[ \sum_{i=1}^m \sum_{k=1}^K y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2
+\end{gather*}
+
+Some nested summations are added to account for our multiple output nodes. In the first part of the equation, between the square brackets, we have an additional nested summation that loops through the number of output nodes.
+
+In the regularization part, after the square brackets, we must account for multiple theta matrices. The number of columns in our current theta matrix is equal to the number of nodes in our current layer (including the bias unit). The number of rows in our current theta matrix is equal to the number of nodes in the next layer (excluding the bias unit). As before with logistic regression, we square every term.
+
+* **Backpropagation algorithm**
+
+"Backpropagation" is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression.
+
+Our goal is to compute:
+
+$$$
+\min_\Theta J(\Theta)
+
+For the **last layer**, we can compute the vector of delta values with:
+
+$$$
+\large
+\delta^{(L)} = a^{(L)} - y
+
+Where L is our total number of layers and $a^{(L)}$ is the vector of activation units for the last layer. So our "error values" for the last layer are simply the differences of our actual results in the last layer and the correct outputs in y.
+
+To get the delta values of the layers before the last layer, we can use an equation that steps us back from right to left:
+
+$$$
+\delta^{(l)} = ((\Theta^{(l)})^T \delta^{(l+1)})\ .*\ g'(z^{(l)})
+
+The delta values of layer $l$ are calculated by multiplying the delta values in the next layer with the theta matrix of layer $l$. We then element-wise multiply that with a function called $g'$, or g-prime, which is the derivative of the activation function $g$ evaluated with the input values given by $z^{(l)}$.
+
+The g-prime derivative terms can also be written out as:
+
+$$$
+g'(z^{(l)}) = a^{(l)}\ .*\ (1 - a^{(l)})
+
+This can be shown and proved in calculus.
+
+$$$
+g(z) = \frac{1}{1 + e^{-z}}
+
+The full backpropagation equation for the inner nodes is then:
+
+$$$
+\delta^{(l)} = ((\Theta^{(l)})^T \delta^{(l+1)})\ .*\ a^{(l)}\ .*\ (1 - a^{(l)})
+
 ### Unsupervised Learning
 
 Unsupervised learning, on the other hand, allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.

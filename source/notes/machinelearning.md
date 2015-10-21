@@ -962,6 +962,10 @@ First, pick a network architecture; choose the layout of your neural network, in
 
 When we perform forward and back propagation, we loop on every training example.
 
+#### Advice for Applying Machine Learning
+
+For more information, please refer to the Coursera wiki (login required): https://share.coursera.org/wiki/index.php/ML:Advice_for_Applying_Machine_Learning
+
 ### Unsupervised Learning
 
 Unsupervised learning, on the other hand, allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.

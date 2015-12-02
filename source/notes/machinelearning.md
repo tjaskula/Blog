@@ -983,4 +983,4 @@ Another, non-Clustering example, is the "Cocktail Party Algorithm" which can fin
 
 ### K-nearest neighbors
 
-http://www.statsoft.com/textbook/k-nearest-neighbors test
+http://www.statsoft.com/textbook/k-nearest-neighbors

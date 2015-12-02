@@ -977,7 +977,7 @@ This terminology is applied to both linear and logistic regression.
 **Example**:
 
 *Clustering*: Take a collection of 1000 essays written on the US Economy, and find a way to automatically group these essays into a small number that are somehow similar or related by different variables, such as word frequency, sentence length, page count, and so on.
-Another, non-Clustering example, is the "Cocktail Party Algorithm" which can find structure in messy data- like identifying individual voices and music from a mesh of sounds at a cocktail party
+Another, non-Clustering example, is the "Cocktail Party Algorithm" which can find structure in messy data-like identifying individual voices and music from a mesh of sounds at a cocktail party
 
 ## Algorithms
 

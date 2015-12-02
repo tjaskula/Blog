@@ -69,13 +69,13 @@ So this looks pretty well! The code for generating the scatter plot is really si
 	    .WithYAxis(Title="Profit in $10,000s")
 	    .WithMarkers(Style=ChartTypes.MarkerStyle.Cross, Color=Drawing.Color.Red, Size=7)
 
-The code is really strightforward. You can customize titles, markers' styles, axis scales, etc. A great tool accessible from inside the F# interactive.
+It is really strightforward. You can customize titles, markers' styles, axis scales, etc. A great tool accessible from inside the F# interactive.
 
 But before we could plot we had to get the data points from somewhere.
 
 ### Reading data
 
-I could read data points passed to the scatter plot using standard .NET IO functions. But there is a better way. I took [Math.NET Numerics](http://numerics.mathdotnet.com/) for calculations that follows. This excellent library already knows how to read data from `.csv` file:
+I could read data points passed to the scatter plot using standard .NET IO functions. But there is a better way. I took [Math.NET Numerics](http://numerics.mathdotnet.com/) for calculations that follows in the next part. This excellent library already knows how to read data from `.csv` file:
 
 	let dataCulture = CultureInfo("en-US")
 	let dataPath = Path.Combine(__SOURCE_DIRECTORY__, "data.csv")
@@ -101,11 +101,11 @@ J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left (h_\the
 where the hypothesis $h_\theta (x)$ is given by the linear model:
 
 $$$
-$h_\theta(x) = \theta_0 + \theta_1 x$
+h_\theta(x) = \theta_0 + \theta_1 x
 
 The cost function measures the accuracy of our hypothesis. This takes an average (actually a fancier version of an average) of all the results of the hypothesis with inputs from x's compared to the actual output y's
 
-For this task I need a powerfull library that will allow to work with vectors and matrices. All the $\theta$ parameter should be updated at once and using matrices is very strighforward instead of loops. [Math.NET Numerics](http://numerics.mathdotnet.com/) library is an excellent choice. It works well on `mono` too.
+For this task I need a powerfull library that will allow me to work with vectors and matrices. All the $\theta$ parameter should be updated at once and using matrices is very strighforward instead of loops. [Math.NET Numerics](http://numerics.mathdotnet.com/) library is an excellent choice. It works well on `mono` and mac too.
 
 To calculate the cost function `j` we can simply do this:
 

@@ -5,6 +5,7 @@ This script is the main workhorse of FsBlog that just coordinates the commands
 and tasks that operate with the static site generation.
 *)
 
+#I "bin/FsBlogLib/"
 #I "packages/FAKE/tools/"
 #r "packages/FAKE/tools/FakeLib.dll"
 #r "bin/FsBlogLib/RazorEngine.dll"

@@ -60,3 +60,34 @@ Output:
 
 Hint: Watch out the Integer overflow when multiplying two numbers together.
 
+> #time
+- l |> Array.ofList |> getMaxPariwiseProduct
+- #time
+- ;;
+
+--> Timing now on
+
+Real: 00:04:17.058, CPU: 00:04:15.764, GC gen0: 0, gen1: 0
+val it : int64 = 9999700002L
+
+--> Timing now off
+
+
+--> Timing now on
+
+Real: 00:00:00.052, CPU: 00:00:00.052, GC gen0: 0, gen1: 0
+val it : int64 = 9999700002L
+
+--> Timing now off
+
+> #time
+- l |> findTwoMax
+- #time
+- ;;
+
+--> Timing now on
+
+Real: 00:00:04.632, CPU: 00:00:04.663, GC gen0: 5, gen1: 0
+val it : int64 = 9999700002L
+
+--> Timing now off

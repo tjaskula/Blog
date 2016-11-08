@@ -108,7 +108,7 @@ Instead of using nested loops we may want to test another approach. We can itera
 	    |> List.map int64
 	    |> List.reduce (*)
 
-At line 17 we pass to `twoMaxiter` function an empty list which is supposed to contain two maximum numbers, and the input list of all numbers. Then we match on the empty list `o`, if the list `l'` is emtpty then we return the list `o`. If the `o` list has two elements, then we are also done, we have our two maximum numbers. Otherwise we take the maximum number from the list `l'` we remove it with `removeFirst` function (filtering would not work because if the list has two or more equals max numbers we want just to remove the first one) and then we recurse another one appending the max number to the result list `o` and the rest of the list `l'`.
+At line 17 we pass to `twoMaxiter` function as first parameter, an empty list which is supposed to contain two maximum numbers at the end, and as the second parameter, the input list of all numbers. Then we match on the empty list `o`. If the list `l'` is emtpty then we return the list `o`. If the `o` list has two elements, then we are also done, we have our two maximum numbers. Otherwise we take the maximum number from the list `l'` we remove it with `removeFirst` function (filtering would not work because if the list has two or more equals max numbers we want just to remove the first one) and then we recurse another time appending the max number to the result list `o` and passing also the rest of the list `l'`.
 
 	> #time
 	- l |> Array.ofList |> getMaxPariwiseProduct

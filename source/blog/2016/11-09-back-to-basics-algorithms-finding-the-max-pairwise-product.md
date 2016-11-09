@@ -180,7 +180,7 @@ And the result is:
 	--> Timing now off
 
 
-It took more than 4 minutes to compute the result on my computer. Even if I'm doing an extra step of converting the list to an array, this doesn't have much of the inflence on the running time.
+It took more than 4 minutes to compute the result on my computer. Even if I'm doing an extra step of converting the list to an array, this doesn't have much of the influence on the running time.
 
 Let's look at the recursive approach:
 

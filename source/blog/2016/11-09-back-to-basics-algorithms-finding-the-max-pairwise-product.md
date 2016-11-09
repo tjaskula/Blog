@@ -1,7 +1,7 @@
 @{
     Layout = "post";
     Title = "Back to basics: Algorithms - finding the max pairwise product";
-    Date = "2016-11-01T12:05:56";
+    Date = "2016-11-09T08:05:56";
     Tags = "F#, Algorithms, functional programming, FP";
     Description = "Learning F# through the implementaton of basic algorithms";
 }

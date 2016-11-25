@@ -6,6 +6,7 @@ url: http://jaskula.fr
 gitlocation: https://github.com/tjaskula/tjaskula.github.io.git
 gitbranch: master
 title: Tomasz Jaskula's blog
+subtitle: Improve signal, reduce noise = use F#
 description: >
     F# and functional programming is the topic I'm interested in and passionate about at the moment.
     However, software architecture, software craftsmanship, Domain Driven Design

@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Actor);
+@import url(//fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Actor);
 
-/*-------------------------------------------------------------------------- 
-  Formatting for F# code snippets 
+/*--------------------------------------------------------------------------
+  Formatting for F# code snippets
 /*--------------------------------------------------------------------------*/
 
 /* identifier */
@@ -27,7 +27,7 @@ span.prep { color:#af75c1; }
 span.fsi { color:#808080; }
 
 /* omitted */
-span.omitted { 
+span.omitted {
   background:#3c4e52;
   border-radius:5px;
   color:#808080;
@@ -46,7 +46,7 @@ table.pre pre {
   padding:0px;
   margin:0px;
   border:none;
-} 
+}
 table.pre, pre.fssnip, pre {
   line-height:13pt;
   border:1px solid #d8d8d8;
@@ -58,7 +58,7 @@ table.pre, pre.fssnip, pre {
   background-color:#212d30;
   padding:10px;
   border-radius:5px;
-  color:#d1d1d1;  
+  color:#d1d1d1;
 }
 table.pre pre {
   padding:0px;
@@ -75,24 +75,21 @@ table.pre td.lines {
   width:30px;
 }
 
-/*-------------------------------------------------------------------------- 
+/*--------------------------------------------------------------------------
   Formatting for page & standard document content
 /*--------------------------------------------------------------------------*/
 
-/*
 body {
   font-family: Actor, serif;
   padding-top: 0px;
   padding-bottom: 40px;
 }
-*/
 
-/*pre {
+pre {
     word-wrap: inherit;
-}*/
+}
 
- /*Format the heading - nicer spacing etc. */
-
+/* Format the heading - nicer spacing etc. */
 .masthead {
   overflow: hidden;
 }
@@ -107,18 +104,16 @@ body {
   margin-bottom:5px;
   font-size:170%;
 }
-/*hr {
+hr {
   margin:0px 0px 20px 0px;
-}*/
+}
 
- /*Make table headings and td.title bold */
-
-/*td.title, thead {
+/* Make table headings and td.title bold */
+td.title, thead {
   font-weight:bold;
-}*/
+}
 
- /*Format the right-side menu */
-
+/* Format the right-side menu */
 #menu {
   margin-top:50px;
   font-size:11pt;
@@ -135,8 +130,7 @@ body {
   line-height:25px;
 }
 
- /*Change font sizes for headings etc. */
-
+/* Change font sizes for headings etc. */
 #main h1 { font-size: 26pt; margin:10px 0px 15px 0px; }
 #main h2 { font-size: 20pt; margin:20px 0px 0px 0px; }
 #main h3 { font-size: 14pt; margin:15px 0px 0px 0px; }
@@ -144,7 +138,7 @@ body {
 #main ul { font-size: 12pt; margin-top:10px; }
 #main li { font-size: 12pt; margin: 5px 0px 5px 0px; }
 
-/*-------------------------------------------------------------------------- 
+/*--------------------------------------------------------------------------
   Formatting for API reference
 /*--------------------------------------------------------------------------*/
 
@@ -172,14 +166,14 @@ body {
   font-size:12pt;
   margin:10px 0px 0px 0px;
 }
-/*-------------------------------------------------------------------------- 
-  Additional formatting for the homepage 
+/*--------------------------------------------------------------------------
+  Additional formatting for the homepage
 /*--------------------------------------------------------------------------*/
 
-#nuget { 
+#nuget {
   margin-top:20px;
-  font-size: 11pt; 
-  padding:20px; 
+  font-size: 11pt;
+  padding:20px;
 }
 
 #nuget pre {

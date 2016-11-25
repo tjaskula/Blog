@@ -78,12 +78,13 @@ table.pre td.lines {
 /*--------------------------------------------------------------------------
   Formatting for page & standard document content
 /*--------------------------------------------------------------------------*/
-
+/*
 body {
   font-family: Actor, serif;
   padding-top: 0px;
   padding-bottom: 40px;
 }
+*/
 
 pre {
     word-wrap: inherit;

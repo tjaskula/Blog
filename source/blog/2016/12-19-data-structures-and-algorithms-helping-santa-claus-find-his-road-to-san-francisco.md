@@ -204,4 +204,77 @@ All the operations are described above. As you can see it is very simple and str
 * **Easy to implement**: just few lines of code.
 * **Not functional friendly**: mutable structures can be sometimes useful, but this implementation doesn't help with functional style and immutability.
 
-The interesting bits are the `build()` function which allows to turn an array into the heap. We repair the heap property going from bottom to top. Initially, the heap property is satisfied in all the leaves (i.e., subtrees of depth 0) then start repairing the heap property in all subtrees of depth 1. When we reach the root, the heap property is satisfied in the whole tree. Running time is $O(n \log n)$ since we call `siftDown` for $O(n)$
+The interesting bits are the `build()` function which allows to turn an array into the heap. We repair the heap property going from bottom to top. Initially, the heap property is satisfied in all the leaves (i.e., subtrees of depth 0) then start repairing the heap property in all subtrees of depth 1. When we reach the root, the heap property is satisfied in the whole tree. Running time is $O(n \log n)$ since we call `siftDown` for $O(n)$ nodes. If node is already close to the leaves than sifting it down is fast.
+
+### Benchmarking the running time
+
+I used [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet) to mesure the performance of my implementation and I compared it to the `FSharpx.Collections.PriorityQueue` which is a full functional data structure.
+
+This is the test I used:
+
+	let rng = Random()
+	let max = pown 10 9
+
+	type PriorityQueue () =
+	    let mutable list  : int list = []
+
+	    [<Params (2000, 20000, 200000, 2000000)>]
+	    member val public Length = 0 with get, set
+
+	    [<Setup>]
+	    member self.SetupData() =
+	        list <- [for i in 2..self.Length -> rng.Next(1, max)]
+
+	    [<Benchmark>]
+	    member self.MaxPriorityQueue () = PriorityQueue<int>(list)
+
+	    [<Benchmark>]
+	    member self.MaxPriorityQueueInsertingFromStart () = 
+	        let pq = PriorityQueue<int>()
+	        list |> List.iter pq.Enqueue
+
+	    [<Benchmark>]
+	    member self.FSharpxPriorityQueueInsertingFromStart () = 
+	        let pq = PriorityQueue.empty true
+	        let rec insertIntoPriorityQueue xs (q: IPriorityQueue<IComparable>) =
+	            match xs with
+	            | [] -> ()
+	            | h::tail -> insertIntoPriorityQueue tail (q.Insert(h))
+	        insertIntoPriorityQueue list pq
+
+	[<EntryPoint>]
+	let main argv = 
+	    (BenchmarkSwitcher[|typeof<PriorityQueue>|]).Run argv
+	    |> string |> printfn "%s"
+	    0
+
+And here are the results:
+
+
+	[lang=ini]
+	BenchmarkDotNet=v0.10.1, OS=Microsoft Windows NT 6.2.9200.0
+	Processor=Intel(R) Core(TM) i7-3720QM CPU 2.60GHz, ProcessorCount=4
+	Frequency=2533316 Hz, Resolution=394.7395 ns, Timer=TSC
+	  [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1586.0
+	  DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1586.0
+
+
+Method |  Length |              Mean |         StdDev |    Allocated |
+--------------------------------------- |-------- |------------------ |--------------- |---------- |
+                       **MaxPriorityQueue** |    **2000** |       **568.6416 us** |     **10.9266 us** |    **107.1 kB** |
+     MaxPriorityQueueInsertingFromStart |    2000 |       687.4757 us |      1.7271 us |  123.5 kB |
+ FSharpxPriorityQueueInsertingFromStart |    2000 |       423.1923 us |     10.4438 us |  167.92 kB |
+                       **MaxPriorityQueue** |   **20000** |     **5,646.1750 us** |     **13.7735 us** |     **1.16 MB** |
+     MaxPriorityQueueInsertingFromStart |   20000 |     7,006.6801 us |     21.8178 us |    1.35 MB |
+ FSharpxPriorityQueueInsertingFromStart |   20000 |     4,854.3166 us |     19.2608 us |    1.68 MB |
+                       **MaxPriorityQueue** |  **200000** |    **57,873.1854 us** |    **302.7054 us** |   **11.14 MB** |
+     MaxPriorityQueueInsertingFromStart |  200000 |    72,939.0291 us |    573.1936 us |   13.06 MB |
+ FSharpxPriorityQueueInsertingFromStart |  200000 |   104,380.8573 us |  1,036.8847 us |   16.8 MB |
+                       **MaxPriorityQueue** | **2000000** |   **596,396.9013 us** |  **3,905.1761 us** | **107.11 MB** |
+     MaxPriorityQueueInsertingFromStart | 2000000 |   747,160.8772 us | 26,935.2538 us | 126.29 MB |
+ FSharpxPriorityQueueInsertingFromStart | 2000000 | 1,537,904.5511 us | 62,809.3363 us |   168 MB |
+
+<br />  
+<br />
+
+My implementation seems to be fastest starting from 200000 elements and with 2 millions is twice as fast as `FSharpx.Collections.PriorityQueue`
